@@ -3,6 +3,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface CartItem {
   readonly id: number;
   price: number;
+  details: {
+    manufacturer: string;
+    warranty: string;
+  };
 }
 
 export interface CartState {
@@ -20,6 +24,17 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    updateProductWarranty(
+      state,
+      action: PayloadAction<{ id: number; warranty: string }>,
+    ) {
+      const cartItem = state.items.find(
+        (item) => item.id === action.payload.id,
+      );
+      if (cartItem) {
+        cartItem.details.warranty = action.payload.warranty;
+      }
+    },
     addToCart(state, action: PayloadAction<CartItem>) {
       state.items.push(action.payload);
       state.totalPrice += action.payload.price;
