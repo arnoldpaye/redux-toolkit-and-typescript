@@ -1,8 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
-export const store = configureStore({
+const preloadedState = {
+  cart: {
+    items: [{ id: 1, name: "Shoes", price: 50 }],
+    totalPrice: 50,
+  },
+};
+
+const store = configureStore({
   reducer: {},
+  devTools: process.env.NODE_ENV !== "production",
+  preloadedState,
 });
-  
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
