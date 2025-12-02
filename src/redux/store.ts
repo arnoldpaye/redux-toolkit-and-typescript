@@ -7,7 +7,7 @@ const preloadedState = {
   },
 };
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {},
   devTools: process.env.NODE_ENV !== "production",
   preloadedState,
