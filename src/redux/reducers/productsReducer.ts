@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchProducts } from "../actions/productsActions";
 
-interface Product {
+export interface Product {
   id: number;
   title: string;
   price: number;
