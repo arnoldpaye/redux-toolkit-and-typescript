@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface CartItem {
-  readonly id: number;
+  id: number;
   price: number;
-  details: {
+  details?: {
     manufacturer: string;
     warranty: string;
   };
@@ -31,7 +31,7 @@ const cartSlice = createSlice({
       const cartItem = state.items.find(
         (item) => item.id === action.payload.id,
       );
-      if (cartItem) {
+      if (cartItem && cartItem.details) {
         cartItem.details.warranty = action.payload.warranty;
       }
     },
