@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -8,14 +7,10 @@ import {
   CartInfoContainer,
   CartInfoText,
 } from "./styles";
-import {
-  selectCartTotalItems,
-  selectCartTotalPrice,
-} from "../../redux/selectors/cartSelector";
+import { useCart } from "./hooks/useCart";
 
 export const Cart: React.FC = () => {
-  const totalItems = useSelector(selectCartTotalItems);
-  const totalPrice = useSelector(selectCartTotalPrice);
+  const { totalItems, totalPrice } = useCart();
 
   return (
     <CartContainer>
