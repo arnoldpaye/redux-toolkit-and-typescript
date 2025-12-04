@@ -10,7 +10,7 @@ export interface Product {
   category: string;
 }
 
-interface ProductsState {
+export interface ProductsState {
   products: Product[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
